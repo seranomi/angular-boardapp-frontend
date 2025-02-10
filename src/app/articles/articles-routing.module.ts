@@ -1,13 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ArticlesPage } from './articles.page';
+import { ArticlesListPage } from './articles-list/articles-list.page';
+import { ArticleDetailPage } from './article-detail/article-detail.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ArticlesPage
-  }
+    redirectTo: 'list',
+    pathMatch: 'full'
+  },
+  {
+    path: 'list',
+    component: ArticlesListPage
+  },
+  {
+    path: ':id/detail',
+    component: ArticleDetailPage
+  },
 ];
 
 @NgModule({
