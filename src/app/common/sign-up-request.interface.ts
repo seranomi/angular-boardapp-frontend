@@ -5,5 +5,5 @@ export interface SignUpRequest {
   username: string;
   password: string;
   passwordConfirm: string;
-  role: UserRole.USER;
+  role: UserRole;
 }
