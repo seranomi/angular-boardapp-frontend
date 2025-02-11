@@ -27,16 +27,20 @@ export class SigninComponent implements OnInit {
     };
     console.log('signInData:', signInData);
 
-    try {
-      const response = await this.authService.signIn(signInData);
-      if (response) {
-        console.log(response);
-        this.router.navigate(['/']);
-      } else {
-        console.error('Sign In Error');
+    this.authService.signIn(signInData).subscribe({
+      next: response => {
+        if (response.success) {
+          this.router.navigate(['/']);
+        } else {
+          console.error('Sign In failed:', response.message);
+        }
+      },
+      error: err => {
+        console.error('Sign In error:', err);
+      },
+      complete: () => {
+        console.log('Sign In request completed.');
       }
-    } catch (error) {
-      console.log('Sign In Error', error);
-    }
+    });
   }
 }

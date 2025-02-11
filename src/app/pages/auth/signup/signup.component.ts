@@ -32,15 +32,21 @@ export class SignupComponent implements OnInit {
       passwordConfirm: this.passwordConfirm,
       role: this.role,
     };
-    console.log('signUpData:', signUpData);
-    try {
-      const response = await this.authService.signUp(signUpData);
-      if (response.success) {
-        console.log(response);
-        this.router.navigate(['auth']);
-      } else {
-        console.error('Sign Up Error', response.message);
+    
+    this.authService.signUp(signUpData).subscribe({
+      next: response => {
+        if (response.success) {
+          this.router.navigate(['/auth/signin']);
+        } else {
+          console.error('Sign Up failed:', response.message);
+        }
+      },
+      error: err => {
+        console.error('Sign Up error:', err);
+      },
+      complete: () => {
+        console.log('Sign Up request completed.');
       }
-    } catch (error) {}
+    });
   }
 }

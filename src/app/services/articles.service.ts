@@ -21,34 +21,26 @@ export class ArticlesService {
 
   //   return this.http.get<ApiResponse<ArticleResponse[]>>(`${this.apiUrl}`, { headers });
   // }
+  getAllArticles(): Observable<ApiResponse<ArticleResponse[]>> {
+    const token = localStorage.getItem('jwtToken'); // 로컬스토리지에서 JWT 토큰 가져오기
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : '' // JWT 토큰을 헤더에 포함
+    });
+
+    return this.http.get<ApiResponse<ArticleResponse[]>>(`${this.apiUrl}`, { headers });
+  }
   
-  async getAllArticles(): Promise<ApiResponse<ArticleResponse[]>> {
-    try {
-      const response = await fetch(`${this.apiUrl}`);
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data: ApiResponse<ArticleResponse[]> = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Fetch error', error);
-      throw error;
-    }
+  getArticleById(id: number): Observable<ApiResponse<ArticleResponse>> {
+    const token = localStorage.getItem('jwtToken'); // 로컬스토리지에서 JWT 토큰 가져오기
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : '' // JWT 토큰을 헤더에 포함
+    });
+
+    return this.http.get<ApiResponse<ArticleResponse>>(`${this.apiUrl}/${id}`, { headers });
   }
 
-  async getArticleById(id: number): Promise<ApiResponse<ArticleResponse>> {
-    try {
-      const response = await fetch(`${this.apiUrl}/${id}/detail`);
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data: ApiResponse<ArticleResponse> = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Fetch error', error);
-      throw error;
-    }
-  }
+  
 }

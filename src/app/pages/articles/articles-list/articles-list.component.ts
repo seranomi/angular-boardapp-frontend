@@ -15,39 +15,26 @@ export class ArticlesListComponent implements OnInit {
 
   constructor(
     private articlesService: ArticlesService,
-    private router: Router
+    private router: Router,
   ) {}
 
-  async ngOnInit() {
-    try {
-      const response = await this.articlesService.getAllArticles();
-      if (response.success) {
-        this.articles = response.data;
-      } else {
-        console.error(response.message);
+  ngOnInit() {
+    this.articlesService.getAllArticles().subscribe({
+      next: response => {
+        if (response.success) {
+          this.articles = response.data;
+        } else {
+          console.error(response.message);
+        }
+      },
+      error: err => {
+        console.error('Error fetching articles:', err);
+      },
+      complete: () => {
+        console.log('Fetching articles request completed.');
       }
-    } catch (error) {
-      console.error('Fetch error', error);
-    }
+    });
   }
-
-  // ngOnInit() {
-  //   this.articleService.getAllArticles().subscribe({
-  //     next: response => {
-  //       if (response.success) {
-  //         this.articles = response.data;
-  //       } else {
-  //         console.error(response.message);
-  //       }
-  //     },
-  //     error: err => {
-  //       console.error('Error fetching articles:', err);
-  //     },
-  //     complete: () => {
-  //       console.log('Fetching articles request completed.');
-  //     }
-  //   });
-  // }
 
   viewArticle(id: number) {
     // 상세 페이지로 이동 (예: article-detail 페이지로 이동)

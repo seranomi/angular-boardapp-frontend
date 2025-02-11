@@ -25,12 +25,23 @@ export class ArticleDetailComponent implements OnInit {
   async loadArticle() {
     const id = this.activatedRouter.snapshot.paramMap.get('id');
     if (id) {
-      try {
-        const response = await this.articlesService.getArticleById(+id);
-        this.article = response.data;
-      } catch (error) {
-        console.error('Fetch error');
-      }
+      this.articlesService.getArticleById(+id).subscribe({
+        next: response => {
+          if (response.success) {
+            this.article = response.data;
+          } else {
+            console.error(response.message);
+          }
+        },
+        error: err => {
+          console.error('Error fetching article:', err);
+        },
+        complete: () => {
+          console.log('Fetching an article request completed.');
+        }
+      });
+    } else {
+      console.error('Article ID is null');
     }
   }
 }
