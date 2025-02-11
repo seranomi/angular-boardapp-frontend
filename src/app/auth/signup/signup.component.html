@@ -14,6 +14,13 @@
           </ion-card-header>
           <ion-card-content>
             <form (ngSubmit)="onSignUp()">
+              <!-- Email Input -->
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <!-- <ion-input type="email" [(ngModel)]="email" name="email" required maxlength="100"></ion-input> -->
+                <ion-input type="email" name="email" required maxlength="100"></ion-input>
+              </ion-item>
+
               <!-- Username Input -->
               <ion-item>
                 <ion-label position="floating">Username (Korean)</ion-label>
@@ -33,13 +40,6 @@
                 <ion-label position="floating">Password Confirm</ion-label>
                 <!-- <ion-input type="password" [(ngModel)]="passwordConfirm" name="passwordConfirm" required minlength="8"></ion-input> -->
                 <ion-input type="password" name="passwordConfirm" required minlength="8"></ion-input>
-              </ion-item>
-
-              <!-- Email Input -->
-              <ion-item>
-                <ion-label position="floating">Email</ion-label>
-                <!-- <ion-input type="email" [(ngModel)]="email" name="email" required maxlength="100"></ion-input> -->
-                <ion-input type="email" name="email" required maxlength="100"></ion-input>
               </ion-item>
 
               <!-- Role Select -->
