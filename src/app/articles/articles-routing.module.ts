@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ArticlesListPage } from './articles-list/articles-list.page';
-import { ArticleDetailPage } from './article-detail/article-detail.page';
+import { ArticlesListComponent } from './articles-list/articles-list.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'list',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'list',
-    component: ArticlesListPage
+    component: ArticlesListComponent,
   },
   {
     path: 'detail/:id',
-    component: ArticleDetailPage
+    component: ArticleDetailComponent,
   },
 ];
 
@@ -24,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ArticlesPageRoutingModule {}
+export class ArticlesRoutingModule {}

@@ -4,20 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ArticlesPageRoutingModule } from './articles-routing.module';
-import { ArticlesListPage } from './articles-list/articles-list.page';
-import { ArticleDetailPage } from './article-detail/article-detail.page';
+import { ArticlesRoutingModule } from './articles-routing.module';
+import { ArticlesListComponent } from './articles-list/articles-list.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ArticlesPageRoutingModule
-  ],
-  declarations: [
-    ArticlesListPage, 
-    ArticleDetailPage,
-  ]
+  imports: [CommonModule, FormsModule, IonicModule, ArticlesRoutingModule],
+  declarations: [ArticlesListComponent, ArticleDetailComponent],
 })
 export class ArticlesModule {}

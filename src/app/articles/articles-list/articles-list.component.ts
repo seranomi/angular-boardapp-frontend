@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-articles-list',
-  templateUrl: './articles-list.page.html',
-  styleUrls: ['./articles-list.page.scss'],
+  templateUrl: './articles-list.component.html',
+  styleUrls: ['./articles-list.component.scss'],
   standalone: false,
 })
-export class ArticlesListPage implements OnInit {
+export class ArticlesListComponent implements OnInit {
   articles: Article[] = [];
 
   constructor(
