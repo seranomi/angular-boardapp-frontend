@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Article } from 'src/app/common/article-response.interface';
-import { ArticlesService } from '../articles.service';
+
+import { ArticlesService } from '../../../services/articles.service';
+import { ArticleResponse } from 'src/app/models/articles/article-response.interface';
 
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
   styleUrls: ['./article-detail.component.scss'],
-  standalone: false
+  standalone: false,
 })
 export class ArticleDetailComponent implements OnInit {
-  article: Article | undefined;
+  article: ArticleResponse | undefined;
 
   constructor(
     private articlesService: ArticlesService,
     private activatedRouter: ActivatedRoute
-  ) { }
+  ) {}
 
   async ngOnInit() {
     await this.loadArticle();
   }
 
-  async loadArticle(){
+  async loadArticle() {
     const id = this.activatedRouter.snapshot.paramMap.get('id');
-    if(id) {
+    if (id) {
       try {
         const response = await this.articlesService.getArticleById(+id);
         this.article = response.data;
@@ -32,5 +33,4 @@ export class ArticleDetailComponent implements OnInit {
       }
     }
   }
-
 }

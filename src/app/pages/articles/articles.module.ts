@@ -9,7 +9,11 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, ArticlesRoutingModule],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    IonicModule, 
+    ArticlesRoutingModule],
   declarations: [ArticlesListComponent, ArticleDetailComponent],
 })
 export class ArticlesModule {}

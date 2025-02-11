@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from 'src/app/common/article-response.interface';
-import { ArticlesService } from '../articles.service';
+
+import { ArticlesService } from '../../../services/articles.service';
 import { Router } from '@angular/router';
+import { ArticleResponse } from 'src/app/models/articles/article-response.interface';
 
 @Component({
   selector: 'app-articles-list',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class ArticlesListComponent implements OnInit {
-  articles: Article[] = [];
+  articles: ArticleResponse[] = [];
 
   constructor(
     private articlesService: ArticlesService,
@@ -29,6 +30,24 @@ export class ArticlesListComponent implements OnInit {
       console.error('Fetch error', error);
     }
   }
+
+  // ngOnInit() {
+  //   this.articleService.getAllArticles().subscribe({
+  //     next: response => {
+  //       if (response.success) {
+  //         this.articles = response.data;
+  //       } else {
+  //         console.error(response.message);
+  //       }
+  //     },
+  //     error: err => {
+  //       console.error('Error fetching articles:', err);
+  //     },
+  //     complete: () => {
+  //       console.log('Fetching articles request completed.');
+  //     }
+  //   });
+  // }
 
   viewArticle(id: number) {
     // 상세 페이지로 이동 (예: article-detail 페이지로 이동)
