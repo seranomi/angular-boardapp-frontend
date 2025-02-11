@@ -17,35 +17,35 @@
               <!-- Email Input -->
               <ion-item>
                 <ion-label position="floating">Email</ion-label>
-                <!-- <ion-input type="email" [(ngModel)]="email" name="email" required maxlength="100"></ion-input> -->
-                <ion-input type="email" name="email" required maxlength="100"></ion-input>
+                <ion-input type="email" [(ngModel)]="email" name="email" required maxlength="100"></ion-input>
+                <!-- <ion-input type="email" name="email" required maxlength="100"></ion-input> -->
               </ion-item>
 
               <!-- Username Input -->
               <ion-item>
                 <ion-label position="floating">Username (Korean)</ion-label>
-                <!-- <ion-input type="text" [(ngModel)]="username" name="username" required minlength="2" maxlength="20" pattern="^[가-힣]+$"></ion-input> -->
-                <ion-input type="text" name="username" required minlength="2" maxlength="20" pattern="^[가-힣]+$"></ion-input>
+                <ion-input type="text" [(ngModel)]="username" name="username" required minlength="2" maxlength="20" pattern="^[가-힣]+$"></ion-input>
+                <!-- <ion-input type="text" name="username" required minlength="2" maxlength="20" pattern="^[가-힣]+$"></ion-input> -->
               </ion-item>
 
               <!-- Password Input -->
               <ion-item>
                 <ion-label position="floating">Password</ion-label>
-                <!-- <ion-input type="password" [(ngModel)]="password" name="password" required minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"></ion-input> -->
-                <ion-input type="password" name="password" required minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"></ion-input>
+                <ion-input type="password" [(ngModel)]="password" name="password" required minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"></ion-input>
+                <!-- <ion-input type="password" name="password" required minlength="8" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"></ion-input> -->
               </ion-item>
 
               <!-- Password Input -->
               <ion-item>
                 <ion-label position="floating">Password Confirm</ion-label>
-                <!-- <ion-input type="password" [(ngModel)]="passwordConfirm" name="passwordConfirm" required minlength="8"></ion-input> -->
-                <ion-input type="password" name="passwordConfirm" required minlength="8"></ion-input>
+                <ion-input type="password" [(ngModel)]="passwordConfirm" name="passwordConfirm" required minlength="8"></ion-input>
+                <!-- <ion-input type="password" name="passwordConfirm" required minlength="8"></ion-input> -->
               </ion-item>
 
               <!-- Role Select -->
               <ion-item>
                 <ion-label>Role</ion-label>
-                <!-- <ion-select [(ngModel)]="role" name="role" required> -->
+                <ion-select [(ngModel)]="role" name="role" required> </ion-select>
                 <ion-select name="role" required>
                   <ion-select-option value="USER">User</ion-select-option>
                   <ion-select-option value="ADMIN">Admin</ion-select-option>
