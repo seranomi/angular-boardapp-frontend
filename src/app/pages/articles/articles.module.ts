@@ -14,6 +14,9 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
     FormsModule, 
     IonicModule, 
     ArticlesRoutingModule],
-  declarations: [ArticlesListComponent, ArticleDetailComponent],
+  declarations: [
+    ArticlesListComponent, 
+    ArticleDetailComponent,
+  ],
 })
 export class ArticlesModule {}

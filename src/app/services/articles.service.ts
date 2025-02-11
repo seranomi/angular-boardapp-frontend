@@ -39,7 +39,7 @@ export class ArticlesService {
 
   async getArticleById(id: number): Promise<ApiResponse<ArticleResponse>> {
     try {
-      const response = await fetch(`${this.apiUrl}/${id}`);
+      const response = await fetch(`${this.apiUrl}/${id}/detail`);
 
       if (!response.ok) {
         throw new Error('Network response was not ok');

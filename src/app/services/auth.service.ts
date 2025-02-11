@@ -21,7 +21,8 @@ export class AuthService {
   // }
   async signUp(signUpData: SignUpRequest): Promise<ApiResponse<void>> {
     try {
-      const response = await fetch(`${this.apiUrl}/auth/signup`, {
+      console.log('signUpdata: ',signUpData)
+      const response = await fetch(`${this.apiUrl}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +35,8 @@ export class AuthService {
         throw new Error(errorText);
       }
       const data = await response.json();
-      return await data;
+      return data;
+
     } catch (error) {
       console.error(error);
       throw error;
@@ -42,6 +44,7 @@ export class AuthService {
   }
   async signIn(signInData: SignInRequest): Promise<ApiResponse<void>> {
     try {
+      console.log('signIndata: ',signInData)
       const response = await fetch(`${this.apiUrl}/auth/signin`, {
         method: 'POST',
         headers: {
@@ -54,12 +57,17 @@ export class AuthService {
         console.log(errorText);
         throw new Error(errorText);
       }
+
+      // API 서버의 응답 헤더에서 JWT 토큰을 추출출
       const token = response.headers.get('Authorization');
+      console.log(token);
       if (token) {
         localStorage.setItem('jwtToken', token);
-      }
+      }// 헤더에서 추출한 토큰을 클라이언트 localStorage에 저장
+
       const data = await response.json();
       return data;
+
     } catch (error) {
       console.error(error);
       throw error;

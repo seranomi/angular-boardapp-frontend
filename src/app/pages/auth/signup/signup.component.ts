@@ -17,7 +17,10 @@ export class SignupComponent implements OnInit {
   passwordConfirm: string = '';
   role: UserRole = UserRole.USER;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -30,9 +33,6 @@ export class SignupComponent implements OnInit {
       role: this.role,
     };
     console.log('signUpData:', signUpData);
-
-    this.authService.signUp(signUpData);
-
     try {
       const response = await this.authService.signUp(signUpData);
       if (response.success) {

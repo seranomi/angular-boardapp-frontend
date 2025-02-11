@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +13,10 @@ export class SigninComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -26,13 +29,14 @@ export class SigninComponent implements OnInit {
 
     try {
       const response = await this.authService.signIn(signInData);
-      if (response.success) {
+      if (response) {
         console.log(response);
-
         this.router.navigate(['/']);
       } else {
-        console.error('Sign Up Error', response.message);
+        console.error('Sign In Error');
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log('Sign In Error', error);
+    }
   }
 }
