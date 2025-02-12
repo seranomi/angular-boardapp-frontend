@@ -39,7 +39,7 @@ export class ArticlesService {
       'Authorization': token ? `Bearer ${token}` : '' // JWT 토큰을 헤더에 포함
     });
 
-    return this.http.get<ApiResponse<ArticleResponse>>(`${this.apiUrl}/${id}`, { headers });
+    return this.http.get<ApiResponse<ArticleResponse>>(`${this.apiUrl}/${id}/detail`, { headers });
   }
 
   
